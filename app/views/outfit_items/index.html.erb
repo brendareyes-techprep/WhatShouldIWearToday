@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Outfit items</h1>
+
+<div id="outfit_items">
+  <% @outfit_items.each do |outfit_item| %>
+    <%= render outfit_item %>
+    <p>
+      <%= link_to "Show this outfit item", outfit_item %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New outfit item", new_outfit_item_path %>
