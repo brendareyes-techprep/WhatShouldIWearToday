@@ -1,12 +1,5 @@
-# Rails Template
-
-This is a base Ruby on Rails repository configured for learning with Codespaces (and Gitpod).
-
-- Ruby version: `3.2.1`
-- Rails version: `7.0.4.3`
-
-
-We've added additional Ruby gems and other software that aren't automatically available in a new Rails app.
+This is my code for my final project
+This is going to be an online closet.
 
 ### Additional gems:
 
