@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.string :photo_url
       t.string :color_hex
       t.string :details
-      t.integer :owner_id
+      t.references :owner, foreign_key: { to_table: :users }
 
       t.timestamps
     end

@@ -8,6 +8,8 @@ class OutfitsController < ApplicationController
 
   # GET /outfits/1 or /outfits/1.json
   def show
+    @outfit = Outfit.find(params[:id])
+    @items = outfit.items
   end
 
   # GET /outfits/new
