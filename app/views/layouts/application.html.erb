@@ -8,7 +8,7 @@
     <%= render partial: "shared/cdn_assets" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <link rel="stylesheet" href="shared/styles.css">
+    <%= stylesheet_link_tag 'styles', media: 'all' %>
   </head>
 
   <body>

@@ -69,4 +69,7 @@ class OutfitsController < ApplicationController
     def outfit_params
       params.require(:outfit).permit(:owner_id)
     end
+
+    def landing
+    end
 end

@@ -39,9 +39,9 @@ unless Rails.env.production?
     task add_items: :environment do
       puts "Adding items..."
       items_data = [
-        { color_hex: "#808080", details: "grey long sleeve" },
-        { color_hex: "#0000FF", details: "blue pants" },
-        { color_hex: "#00FF00", details: "green shoes" }
+        { color_hex: "#808080", details: "grey long sleeve", photo_url: "https://media.everlane.com/image/upload/c_fill,dpr_2,f_auto,g_face:center,q_auto,w_auto/v1/i/8b73dbe4_6e1c.jpg" },
+        { color_hex: "#0000FF", details: "blue pants", photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyMC_CiATe4mkYZgKMOUdv0JTmOWJ49ZDDwQ&usqp=CAU" },
+        { color_hex: "#00FF00", details: "green shoes", photo_url: "https://m.media-amazon.com/images/I/5194VX4TWwL._AC_UY1000_.jpg" }
       ]
 
       User.all.each do |user|

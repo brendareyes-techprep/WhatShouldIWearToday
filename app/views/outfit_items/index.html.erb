@@ -2,27 +2,25 @@
 
 <h1>Outfit items</h1>
 
-<!--<div id="outfit_items">-->
-  <%# @outfit_items.each do |outfit_item| %>
-    <%#= render outfit_item %>
-<!--    <p>-->
-      <%#= link_to "Show this outfit item", outfit_item %>
-<!--    </p>-->
-  <%# end %>
-<!--</div>-->
-
 <%= link_to "New outfit item", new_outfit_item_path %>
 
 <div class="row row-cols-1 row-cols-md-2 g-4" id="outfit_items">
   <% @outfit_items.each do |outfit_item| %>
-  <div class="col">
-    <div class="card">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= outfit_item.item_id %></h5>
-        <%= link_to "Show this outfit item", outfit_item %>
+    <div class="col">
+      <div class="card">
+        <% if outfit_item.item.present? %>
+          <img src="<%= outfit_item.item.photo_url %>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= outfit_item.item.details %></h5>
+            <%= link_to "Show this outfit item", outfit_item %>
+          </div>
+        <% else %>
+          <div class="card-body">
+            <p class="card-text">No associated item</p>
+            <%= link_to "Show this outfit item", outfit_item %>
+          </div>
+        <% end %>
       </div>
     </div>
-  </div>
   <% end %>
 </div>
