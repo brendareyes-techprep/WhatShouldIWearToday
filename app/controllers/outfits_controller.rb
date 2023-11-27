@@ -23,7 +23,8 @@ class OutfitsController < ApplicationController
 
   # POST /outfits or /outfits.json
   def create
-    @outfit = Outfit.new(outfit_params)
+    @user = current_user
+    @outfit = @user.outfits.build(outfit_params)
 
     respond_to do |format|
       if @outfit.save
@@ -35,6 +36,7 @@ class OutfitsController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /outfits/1 or /outfits/1.json
   def update
@@ -59,6 +61,9 @@ class OutfitsController < ApplicationController
     end
   end
 
+  def landing
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_outfit
@@ -67,9 +72,6 @@ class OutfitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def outfit_params
-      params.require(:outfit).permit(:owner_id)
-    end
-
-    def landing
+      params.require(:outfit).permit(:owner_id, outfit_items_attributes: [:item_id])
     end
 end

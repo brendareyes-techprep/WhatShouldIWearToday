@@ -1,4 +1,4 @@
-<%= form_with(model: outfit) do |form| %>
+<%= form_with(model: @outfit) do |form| %>
   <% if outfit.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(outfit.errors.count, "error") %> prohibited this outfit from being saved:</h2>
@@ -10,13 +10,13 @@
       </ul>
     </div>
   <% end %>
-
-<!--I want this to hide-->
-  <div>
-    <%= form.label :owner_id, style: "display: block" %>
-    <%= form.number_field :owner_id %>
+  <div class="text-white">
+    <%= form.label :outfit_items %>
+    <% Item.all.each do |item|%>
+      <%= form.check_box :outfit_items_attributes, { multiple: true}, item.id, nil %>
+      <%= form.label "outfit[outfit_items_attributes][]", item.details %>
+    <% end %>
   </div>
-
   <div>
     <%= form.submit %>
   </div>

@@ -1,8 +1,9 @@
 body {
-  background: url('/assets/background2.jpg');
+  background: url('/assets/images/background2.jpg');
   background-size: cover;
   font-family: 'Roboto', sans-serif;
   font-size: 35px;
+  color: white;
   /* font-family: 'Cambo', serif;
   font-size: 15px; */
 }
