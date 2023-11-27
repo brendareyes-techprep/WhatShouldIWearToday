@@ -3,6 +3,7 @@
 # Table name: outfits
 #
 #  id         :integer          not null, primary key
+#  photo_url  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  owner_id   :integer
@@ -21,4 +22,6 @@ class Outfit < ApplicationRecord
   has_many :items, through: :outfit_items
 
   accepts_nested_attributes_for :outfit_items
+  
+  attr_accessor :photo_url
 end

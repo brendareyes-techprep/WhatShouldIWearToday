@@ -10,12 +10,16 @@
       </ul>
     </div>
   <% end %>
-  <div class="text-white">
+  <div>
     <%= form.label :outfit_items %>
     <% Item.all.each do |item|%>
       <%= form.check_box :outfit_items_attributes, { multiple: true}, item.id, nil %>
       <%= form.label "outfit[outfit_items_attributes][]", item.details %>
     <% end %>
+  </div>
+  <div>
+    <%= form.label :photo_url %>
+    <%= form.text_field :photo_url %>
   </div>
   <div>
     <%= form.submit %>

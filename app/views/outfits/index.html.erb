@@ -5,10 +5,9 @@
     <div class="card h-100">
     <% if outfit.items.present? %>
         <% first_item = outfit.items.first %>
-      <img src="<%= first_item.photo_url %>" class="card-img-top" alt="...">
+      <img src="<%= outfit.photo_url %>" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Outfit <%= outfit.created_at.strftime('%m/%d/%y') %></h5>
-          <p class="card-text"><%= first_item.details %></p>
       </div>
       <div class="card-footer">
         <small class="text-body-secondary">Last updated <%= time_ago_in_words(outfit.updated_at) %> <%= link_to "Show this outfit", outfit %> </small>

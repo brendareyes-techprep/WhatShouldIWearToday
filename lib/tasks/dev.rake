@@ -56,6 +56,11 @@ unless Rails.env.production?
 
     task add_outfits: :environment do
       puts "Adding outfits.."
+      outfits_data = [
+        { photo_url: "https://cdn.lookastic.com/looks/blazer-sweatshirt-long-sleeve-shirt-large-99583.jpg" },
+        { photo_url: "https://i.pinimg.com/474x/92/04/b3/9204b3ee5d0202fe84c9c062ed16dffc.jpg" },
+        { photo_url: "https://cdn.lookastic.com/looks/long-sleeve-shirt-chinos-tassel-loafers-large-18404.jpg" }
+      ]
       User.all.each do |user|
         user.outfits.create!
         puts "Added outfit for user #{user.email}"

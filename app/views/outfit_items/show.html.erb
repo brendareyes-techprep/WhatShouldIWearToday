@@ -2,6 +2,8 @@
 
 <%= render @outfit_item %>
 
+<img class="img-thumbnail" style="width: 200px; height: 150px;" src="<%= @outfit_item.item.photo_url %>">
+
 <div>
   <%= link_to "Edit this outfit item", edit_outfit_item_path(@outfit_item) %> |
   <%= link_to "Back to outfit items", outfit_items_path %>
