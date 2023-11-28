@@ -2,8 +2,9 @@
 
 <h1>Outfit Details</h1>
 
+<p><strong>Date Made:</strong> <%= @outfit.date_made %></p>
 <p><strong>Owner:</strong> <%= @outfit.user.email %></p>
-
+<img class="img-thumbnail" style="width: 200px; height: 150px;" src="<%= @outfit.photo_url %>">
 <h2>Items in Outfit:</h2>
 
 <ul>
@@ -13,7 +14,7 @@
       <br>
       Color: <%= item.color_hex %>
       <br>
-      <img class="img-thumbnail" style="width: 200px; height: 150px; src="<%= item.photo_url %>">
+      <img class="img-thumbnail" style="width: 200px; height: 150px;" src="<%= item.photo_url %>">
     </li>
   <% end %>
 </ul>

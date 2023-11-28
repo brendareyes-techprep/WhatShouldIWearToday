@@ -23,16 +23,16 @@ class OutfitsController < ApplicationController
 
   # POST /outfits or /outfits.json
   def create
-    @user = current_user
-    @outfit = @user.outfits.build(outfit_params)
-
+    @outfit = current_user.outfits.new(outfit_params)
     respond_to do |format|
       if @outfit.save
         format.html { redirect_to outfit_url(@outfit), notice: "Outfit was successfully created." }
         format.json { render :show, status: :created, location: @outfit }
+        puts "Current user: #{@user.inspect}"
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @outfit.errors, status: :unprocessable_entity }
+        puts "Current user: #{@user.inspect}"
       end
     end
   end
@@ -65,13 +65,11 @@ class OutfitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_outfit
-      @outfit = Outfit.find(params[:id])
-    end
+  def set_outfit
+    @outfit = Outfit.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def outfit_params
-      params.require(:outfit).permit(:owner_id, outfit_items_attributes: [:item_id])
-    end
+  def outfit_params
+    params.require(:outfit).permit(:owner_id, :photo_url, outfit_items_attributes: [:item_id])
+  end
 end

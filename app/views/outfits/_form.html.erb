@@ -1,25 +1,33 @@
 <%= form_with(model: @outfit) do |form| %>
-  <% if outfit.errors.any? %>
+  <% if @outfit.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(outfit.errors.count, "error") %> prohibited this outfit from being saved:</h2>
+      <h2><%= pluralize(@outfit.errors.count, "error") %> prohibited this outfit from being saved:</h2>
 
       <ul>
-        <% outfit.errors.each do |error| %>
+        <% @outfit.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+
   <div>
     <%= form.label :outfit_items %>
-    <% Item.all.each do |item|%>
-      <%= form.check_box :outfit_items_attributes, { multiple: true}, item.id, nil %>
-      <%= form.label "outfit[outfit_items_attributes][]", item.details %>
+    <% Item.all.each do |item| %>
+      <%= form.fields_for :outfit_items, @outfit.outfit_items.build do |outfit_item_form| %>
+        <%= outfit_item_form.check_box :item_id, {}, item.id, nil %>
+        <%= outfit_item_form.label :item_id, item.details %>
+      <% end %>
     <% end %>
   </div>
+
   <div>
-    <%= form.label :photo_url %>
-    <%= form.text_field :photo_url %>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>bv
+  <div>
+    <%= form.label :date_made %>
+    <%= form.date_field :date_made %>
   </div>
   <div>
     <%= form.submit %>

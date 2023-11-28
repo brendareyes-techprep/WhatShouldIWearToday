@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_27_215038) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_28_155717) do
   create_table "items", force: :cascade do |t|
     t.string "photo_url"
     t.string "color_hex"
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_215038) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo_url"
+    t.date "date_made"
     t.index ["owner_id"], name: "index_outfits_on_owner_id"
   end
 
