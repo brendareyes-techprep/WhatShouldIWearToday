@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  date_made  :date
-#  photo_url  :string
+#  image      :binary
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  owner_id   :integer
@@ -18,6 +18,7 @@
 #  owner_id  (owner_id => users.id)
 #
 class Outfit < ApplicationRecord
+  has_one_attached :image
   belongs_to :user, foreign_key: :owner_id
   has_many :outfit_items
   has_many :items, through: :outfit_items

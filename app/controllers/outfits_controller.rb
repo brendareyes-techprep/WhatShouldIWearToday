@@ -28,11 +28,9 @@ class OutfitsController < ApplicationController
       if @outfit.save
         format.html { redirect_to outfit_url(@outfit), notice: "Outfit was successfully created." }
         format.json { render :show, status: :created, location: @outfit }
-        puts "Current user: #{@user.inspect}"
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @outfit.errors, status: :unprocessable_entity }
-        puts "Current user: #{@user.inspect}"
       end
     end
   end
