@@ -61,7 +61,7 @@ class OutfitsController < ApplicationController
 
   def landing
   end
-
+  
   private
   def set_outfit
     @outfit = Outfit.find(params[:id])
