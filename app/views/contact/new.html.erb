@@ -1,7 +1,10 @@
 <h1>Contact Me</h1>
 
-<%= form_with(model: @contact, url: contact_path, method: :post) do |form| %>
+<% if notice %>
+  <p style="color: green;"><%= notice %></p>
+<% end %>
 
+<%= form_with(model: @contact, url: contact_path, method: :post) do |form| %>
   <div>
     <%= form.label :email %>
     <%= form.email_field :email %>

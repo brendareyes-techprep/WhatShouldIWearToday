@@ -6,11 +6,8 @@ class ContactController < ApplicationController
   
     def create
       @contact = Contact.new(contact_params)
-      if @contact.valid?
-        # You can add logic here to send an email or store the contact information
-        # For now, let's just print the information to the console
-        puts "Email: #{@contact.email}"
-        puts "Description: #{@contact.description}"
+      if @contact.save
+        ContactMailer.contact_email(@contact).deliver_now
         redirect_to root_path, notice: "Message sent successfully!"
       else
         render :new
