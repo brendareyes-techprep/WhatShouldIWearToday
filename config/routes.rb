@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "outfits#landing"
-  get "/contact", to: "contact#index"
+  get "/contact", to: "contact#new", as: "new_contact"
+  post "/contact", to: "contact#create"
   "outfits#index"
   "outfit_items#index"
   "items#index"
