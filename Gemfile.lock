@@ -78,7 +78,6 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
       rouge (>= 1.0.0)
-    bindex (0.8.1)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
     bootsnap (1.17.0)
@@ -375,11 +374,6 @@ GEM
     unicode-display_width (2.5.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-console (4.2.1)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
     web_git (0.1.0)
       actionview
       ansispan
@@ -442,7 +436,6 @@ DEPENDENCIES
   table_print
   turbo-rails
   tzinfo-data
-  web-console
   web_git
   webdrivers
   webmock
