@@ -3,7 +3,4 @@
 
 require_relative "config/application"
 
-# require 'annotate'
-# Annotate.load_tasks
-
 Rails.application.load_tasks
