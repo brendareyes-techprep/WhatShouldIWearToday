@@ -10,7 +10,4 @@ Rails.application.routes.draw do
   root "outfits#landing"
   get "/contact", to: "contact#new", as: "new_contact"
   post "/contact", to: "contact#create"
-  "outfits#index"
-  "outfit_items#index"
-  "items#index"
 end

@@ -1,9 +1,10 @@
 class OutfitsController < ApplicationController
   before_action :set_outfit, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /outfits or /outfits.json
   def index
-    @outfits = Outfit.all
+    @outfits = current_user.outfits
   end
 
   # GET /outfits/1 or /outfits/1.json
@@ -64,7 +65,7 @@ class OutfitsController < ApplicationController
   
   private
   def set_outfit
-    @outfit = Outfit.find(params[:id])
+    @outfit = current_user.outfits.find(params[:id])
   end
 
   def outfit_params
