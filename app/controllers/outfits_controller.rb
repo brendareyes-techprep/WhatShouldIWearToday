@@ -1,6 +1,6 @@
 class OutfitsController < ApplicationController
   before_action :set_outfit, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, exclude: :landing
 
   # GET /outfits or /outfits.json
   def index
