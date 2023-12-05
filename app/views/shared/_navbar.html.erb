@@ -13,8 +13,8 @@
           <a class="nav-link fs-4" href="/items">Items</a>
         </li>
         <% if current_user %>
-          <li class="nav-item">
-            <a class="nav-link fs-4" href="/users/sign_out">Sign out</a>
+          <li class="nav-item fs-4">
+            <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: "delete" } %>
           </li>
           <li class="nav-item">
             <a class="nav-link fs-4" href="/users/edit">Profile</a>
