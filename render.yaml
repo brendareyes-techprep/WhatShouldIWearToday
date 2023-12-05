@@ -1,7 +1,7 @@
 databases:
   - name: WhatShouldIWearToday
     databaseName: WhatShouldIWearToday
-     plan: free
+    plan: free
     user: WhatShouldIWearToday
 
 services:
