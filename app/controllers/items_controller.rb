@@ -1,13 +1,16 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
     @items = current_user.items
-    # @outfit_items = current_user.items.outfit_items
+    # @item = Item.find(params[:id])
   end
 
   def show
+    @item = Item.find(params[:id])
+    authorize @item
   end
 
   def new
@@ -19,6 +22,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = current_user.items.new(item_params)
+    authorize @item
 
     respond_to do |format|
       if @item.save
@@ -59,5 +63,10 @@ class ItemsController < ApplicationController
 
     def item_params
       params.require(:item).permit(:photo_url, :color_hex, :details)
+    end
+    
+    def user_not_authorized
+      flash[:alert] = "Uh oh! You are not authorized to do this."
+      redirect_to(request.referer || root_path)
     end
 end
