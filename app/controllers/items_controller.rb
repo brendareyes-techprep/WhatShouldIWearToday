@@ -1,10 +1,12 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  after_action :verify_authorized, except: %i[index]
+  after_action :verify_policy_scoped, only: %i[index]
 
   def index
-    @items = current_user.items
+    @items = policy_scope(current_user.items)
     # @item = Item.find(params[:id])
   end
 
@@ -18,6 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    authorize @item
   end
 
   def create
@@ -36,6 +39,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    authorize @item
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to item_url(@item), notice: "Item was successfully updated." }
@@ -48,6 +52,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    authorize @item
     @item.destroy
 
     respond_to do |format|
