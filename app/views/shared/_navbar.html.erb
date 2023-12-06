@@ -7,24 +7,29 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active fs-4" aria-current="page" href="/outfits">Outfits</a>
+          <!--<a class="nav-link active fs-4" aria-current="page" href="/outfits">Outfits</a>-->
+          <%= link_to "Outfits", "/outfits", class: "nav-link fs-4#{' active' if current_page?('/outfits')}" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link fs-4" href="/items">Items</a>
+          <!--<a class="nav-link fs-4" href="/items">Items</a>-->
+          <%= link_to "Items", "/items", class: "nav-link fs-4#{' active' if current_page?('/items')}" %>
         </li>
         <% if current_user %>
           <li class="nav-item">
-            <a class="nav-link fs-4" href="/users/sign_out">Sign out</a>
+            <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: "delete" }, class: 'nav-link fs-4' %>
           </li>
           <li class="nav-item">
-            <a class="nav-link fs-4" href="/users/edit">Profile</a>
+            <!--<a class="nav-link fs-4" href="/users/edit">Profile</a>-->
+            <%= link_to 'Profile', '/users/edit', class: 'nav-link fs-4' %>
           </li>
         <% else %>
           <li class="nav-item">
-            <a class="nav-link fs-4" href="/users/sign_in">Sign In</a>
+            <!-- <a class="nav-link fs-4" href="/users/sign_in">Sign In</a>-->
+            <%= link_to 'Sign In', '/users/sign_in', class: 'nav-link fs-4' %>
           </li>
           <li class="nav-item">
-            <a class="nav-link fs-4" href="/users/sign_up">Sign Up</a>
+            <!--<a class="nav-link fs-4" href="/users/sign_up">Sign Up</a>-->
+            <%= link_to 'Sign Up', '/users/sign_up', class: 'nav-link fs-4' %>
           </li>
         <% end %>
       </ul>
