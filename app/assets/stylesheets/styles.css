@@ -1,5 +1,5 @@
 body {
-  background: url("<%= asset_path('background.jpg') %>");
+  background: #F5F5DC;
   background-size: cover;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
