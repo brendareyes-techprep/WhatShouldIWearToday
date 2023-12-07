@@ -6,5 +6,4 @@ class ItemPolicy < ApplicationPolicy
   def create?
     user.present?
   end
-
 end
