@@ -1,5 +1,5 @@
 body {
-  background-image: #fff5f5;
+  background-image: linear-gradient(to right, #ccffcc 0%, #ffffff 100%);;
   background-size: cover;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
@@ -15,7 +15,7 @@ footer {
   bottom: 0;
   width: 100%;
 }
-navbar {
+.navbar {
   background-color: #D3D3D3;
   color: black;
   text-align: center;
