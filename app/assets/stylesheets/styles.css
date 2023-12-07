@@ -1,5 +1,5 @@
 body {
-  background-image: asset-url('background.png');
+  background-image: #fff5f5;
   background-size: cover;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
@@ -17,6 +17,7 @@ footer {
 }
 navbar {
   background-color: #D3D3D3;
+  color: black;
   text-align: center;
   padding: 10px;
   position: fixed;
