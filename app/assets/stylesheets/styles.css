@@ -1,5 +1,4 @@
 body {
-  background-image: url("assets/images/background.png");
   background-size: cover;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
@@ -14,4 +13,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+section {
+  background-image: url('assets/images/background.png');
 }
