@@ -75,7 +75,7 @@ end
 # ===========
 gem "appdev_support"
 gem "awesome_print"
-gem "devise"    
+gem "devise"     
 gem "dotenv-rails"
 gem "faker"
 gem "htmlbeautifier"
@@ -84,7 +84,8 @@ gem "sqlite3", "~> 1.4"
 gem "table_print"
 gem "pundit"
 
-group :development, :production do
+group :development do
+  gem "annotate"
   gem "better_errors"
   gem "binding_of_caller"
   gem "draft_generators"
@@ -103,6 +104,6 @@ end
 
 group :test do
   gem "draft_matchers"#, "0.0.2"#path: "../../my_stuff/draft_matchers"
-    gem "rspec-html-matchers"
+  gem "rspec-html-matchers"
   gem "webmock"
 end
