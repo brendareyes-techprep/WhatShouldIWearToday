@@ -1,28 +1,23 @@
 <p style="color: green"><%= notice %></p>
-<%# if policy(@item).show? %>
 <%= link_to "New item", new_item_path %>
 <div class="row row-cols-1 row-cols-md-3 g-4" id="outfit_items">
   <% @items.each do |item| %>
     <div class="col">
       <div class="card">
         <% if item.present? %>
-<<<<<<< HEAD
           <img src="<%= item.photo_url %>" class="card-img-top card mb-3" style="max-width: 540px;" alt="...">
-=======
           <img src="<%= item.photo_url %>" class="card-img-top" alt="...">
->>>>>>> parent of 32f5dc3 (changing the card size)
           <div class="card-body">
             <h5 class="card-title"><%= item.details %></h5>
             <%= link_to "Show this outfit item", item %>
           </div>
         <% else %>
           <div class="card-body">
-            <p class="card-text">No associated item</p>
+            <p class="card-text"></p>
             <%= link_to "Show this outfit item", item %>
           </div>
         <% end %>
       </div>
     </div>
   <% end %>
-  <%# end %>
 </div>
