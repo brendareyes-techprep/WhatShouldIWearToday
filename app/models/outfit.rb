@@ -4,10 +4,11 @@
 #
 #  id         :integer          not null, primary key
 #  date_made  :date
-#  image      :binary
+#  vibe       :url
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  owner_id   :integer
+#  name       :string
 #
 # Indexes
 #

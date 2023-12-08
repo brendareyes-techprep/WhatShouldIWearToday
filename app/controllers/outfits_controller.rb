@@ -21,9 +21,6 @@ class OutfitsController < ApplicationController
   end
 
   def create
-    uploaded_io = params[:outfit][:image]
-    params[:outfit][:image] = uploaded_io.read unless uploaded_io.nil?
-    
     @outfit = current_user.outfits.new(outfit_params)
     
     respond_to do |format|
@@ -68,7 +65,7 @@ class OutfitsController < ApplicationController
   end
 
   def outfit_params
-    params.require(:outfit).permit(:image, :date_made, outfit_items_attributes: [:item_id])
+    params.require(:outfit).permit(:image, :vibe, :name, outfit_items_attributes: [:item_id])
   end
 
   def user_not_authorized

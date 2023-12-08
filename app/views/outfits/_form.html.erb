@@ -1,3 +1,39 @@
+<%#= form_with(model: @outfit) do |form| %>
+  <%# if @outfit.errors.any? %>
+<!--    <div style="color: red">
+      <h2><%#= pluralize(@outfit.errors.count, "error") %> prohibited this outfit from being saved:</h2>
+
+      <ul>
+        <%# @outfit.errors.each do |error| %>-->
+<!--          <li><%#= error.full_message %></li>-->
+        <%# end %>
+<!--      </ul>
+    </div>
+  <%# end %>-->
+<!--
+  <div>
+    <h4> What are the <%#= form.label :outfit_items_attributes %> for this outfit?</h4>
+    <%# Item.all.each_with_index do |item, index| %>-->
+      <%#= form.fields_for "outfit_items_attributes[#{index}]", OutfitItem.new, index: item.id do |outfit_item_form| %>
+        <%#= outfit_item_form.check_box :item_id, {}, item.id, nil %>
+        <%#= outfit_item_form.label :item_id, item.details %>
+      <%# end %>
+    <%# end %>
+<!--  </div>
+
+  <div>
+    <h4>What's the <%#= form.label :vibe %> for this outfit?</h4> <small>(This should be a photo url)</small>
+    <%#= form.text_field :vibe %>-->
+<!--  </div>
+  <div>
+    <h4>Let's give it a <%#= form.label :name %></h4>
+    <%#= form.text_field :name %>-->
+<!--  </div>
+  <div>
+    <%#= form.submit %>-->
+<!--  </div>-->
+<%# end %>
+<!---->
 <%= form_with(model: @outfit) do |form| %>
   <% if @outfit.errors.any? %>
     <div style="color: red">
@@ -12,22 +48,23 @@
   <% end %>
 
   <div>
-    <%= form.fields_for :outfit_items_attributes, index: nil do |outfit_item_form| %>
-      <% Item.all.each do |item| %>
-        <%= outfit_item_form.check_box :item_id, {}, item.id, nil %>
-        <%= outfit_item_form.label :item_id, item.details %>
-      <% end %>
+    <%= form.label :outfit_items %>
+    <% Item.all.each do |item| %>
+      <%= check_box_tag 'outfit[outfit_items_attributes][][item_id]', item.id, @outfit.items.include?(item) %>
+      <%= item.details %>
     <% end %>
   </div>
 
   <div>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>bv
-  <div>
-    <%= form.label :date_made %>
-    <%= form.date_field :date_made %>
+    <%= form.label :vibe %>
+    <%= form.text_field :vibe %>
   </div>
+  
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>
