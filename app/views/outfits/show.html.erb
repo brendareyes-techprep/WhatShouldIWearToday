@@ -3,7 +3,7 @@
 <h1>Outfit Details</h1>
 
 <p><strong>Date Made:</strong> <%= @outfit.created_at %></p>
-<img class="img-thumbnail" style="width: 200px; height: 150px;" src="<%= @outfit.image %>">
+<img class="card-img-top" alt="..." src="data:image/jpeg;base64,<%= Base64.strict_encode64(@outfit.image.unpack('C*').map{ |b| sprintf("%02X",b) }.join) if @outfit.image.present? %>" > 
 <p><strong>Owner:</strong> <%= @outfit.user.email %></p>
 <h2>Items in Outfit:</h2>
 

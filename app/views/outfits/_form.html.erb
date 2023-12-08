@@ -12,9 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :outfit_items %>
-    <% Item.all.each do |item| %>
-      <%= form.fields_for :outfit_items, @outfit.outfit_items.build do |outfit_item_form| %>
+    <%= form.fields_for :outfit_items_attributes, index: nil do |outfit_item_form| %>
+      <% Item.all.each do |item| %>
         <%= outfit_item_form.check_box :item_id, {}, item.id, nil %>
         <%= outfit_item_form.label :item_id, item.details %>
       <% end %>

@@ -1,28 +1,28 @@
 <%= link_to "New outfit", new_outfit_path %>
-<% if @outfits.any? %>
 <div class="row row-cols-1 row-cols-md-3 g-4">
-<% @outfits.each do |outfit| %>
-  <div class="col">
-    <div class="card h-100">
-    <% if outfit.items.present? %>
-        <% first_item = outfit.items.first %>
-      <img src="<%= outfit.image %>" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Outfit <%= outfit.created_at.strftime('%m/%d/%y') %></h5>
+<% if @outfits.any? %>
+  <% @outfits.each do |outfit| %>
+    <div class="col">
+      <div class="card h-100">
+        <% if outfit.items.present? %>
+          <% first_item = outfit.items.first %>
+          <img class="card-img-top" alt="..." src="data:image/png;base64,<%= Base64.strict_encode64(outfit.image.unpack('C*').map{ |b| sprintf("%02X",b) }.join) if outfit.image.present? %>" />
+          <div class="card-body">
+            <h5 class="card-title">Outfit <%= outfit.created_at.strftime('%m/%d/%y') %></h5>
+          </div>
+          <div class="card-footer">
+            <small class="text-body-secondary">Last updated <%= time_ago_in_words(outfit.updated_at) %> <%= link_to "Show this outfit", outfit %> </small>
+          </div>
+        <% else %>
+          <div class="card-body">
+            <p class="card-text">No items in this outfit</p>
+            <%= link_to "Show this outfit", outfit %>
+          </div>
+        <% end %>
       </div>
-      <div class="card-footer">
-        <small class="text-body-secondary">Last updated <%= time_ago_in_words(outfit.updated_at) %> <%= link_to "Show this outfit", outfit %> </small>
-      </div>
-      <% else %>
-        <div class="card-body">
-          <p class="card-text">No items in this outfit</p>
-          <%= link_to "Show this outfit", outfit %>
-        </div>
-      <% end %>
     </div>
-  </div>
   <% end %>
-</div>
 <% else %>
   <p>Uh oh, it looks like you haven't created anything yet!</p>
 <% end %>
+</div>

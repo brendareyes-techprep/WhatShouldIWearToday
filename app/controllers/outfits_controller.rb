@@ -21,17 +21,22 @@ class OutfitsController < ApplicationController
   end
 
   def create
+    uploaded_io = params[:outfit][:image]
+    params[:outfit][:image] = uploaded_io.read unless uploaded_io.nil?
+    
     @outfit = current_user.outfits.new(outfit_params)
+    
     respond_to do |format|
-      if @outfit.save
-        format.html { redirect_to outfit_url(@outfit), notice: "Outfit was successfully created." }
-        format.json { render :show, status: :created, location: @outfit }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @outfit.errors, status: :unprocessable_entity }
-      end
+        if @outfit.save
+            format.html { redirect_to outfit_url(@outfit), notice: "Outfit was successfully created." }
+            format.json { render :show, status: :created, location: @outfit }
+        else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @outfit.errors, status: :unprocessable_entity }
+        end
     end
   end
+
 
   def update
     respond_to do |format|
@@ -63,7 +68,7 @@ class OutfitsController < ApplicationController
   end
 
   def outfit_params
-    params.require(:outfit).permit(:owner_id, :photo_url, outfit_items_attributes: [:item_id])
+    params.require(:outfit).permit(:image, :date_made, outfit_items_attributes: [:item_id])
   end
 
   def user_not_authorized
