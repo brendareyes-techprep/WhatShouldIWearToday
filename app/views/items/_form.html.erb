@@ -12,16 +12,19 @@
   <% end %>
 
   <div>
+    <h5> Let's add a photo of the item!</h5><small> This should be a URL</small>
     <%= form.label :photo_url, style: "display: block" %>
     <%= form.text_field :photo_url %>
   </div>
 
   <div>
+    <h5>Cool! Let's add the color hex. Not sure? That's okay just put the color of the item! </h5> 
     <%= form.label :color_hex, style: "display: block" %>
     <%= form.text_field :color_hex %>
   </div>
 
   <div>
+    <h5>Any specific details you want to add? For example, this [item] fits snug, or maybe this [item] has a hole by the neck area </h5>
     <%= form.label :details, style: "display: block" %>
     <%= form.text_field :details %>
   </div>

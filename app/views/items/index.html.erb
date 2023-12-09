@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
-<% if @items.any? %>
 <%= link_to "New item", new_item_path %>
+<% if @items.any? %>
 <div class="row row-cols-1 row-cols-md-3 g-4" id="outfit_items">
   <% @items.each do |item| %>
     <div class="col">
