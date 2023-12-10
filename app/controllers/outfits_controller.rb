@@ -9,8 +9,8 @@ class OutfitsController < ApplicationController
   end
 
   def show
-    @outfit = Outfit.find(params[:id])
-    @items = @outfit.items
+    @outfit = Outfit.includes(:items).find(params[:id])
+    @items = @outfit.items.reload
   end
 
   def new
@@ -21,11 +21,13 @@ class OutfitsController < ApplicationController
   end
 
   def create
-    @outfit = current_user.outfits.new(outfit_params)
-  
-    # the outfit_items_attributes form logic in create to refrence
+    # Remove outfit_items_attributes from outfit_params
+    @outfit = current_user.outfits.new(outfit_params.except(:outfit_items_attributes))
+    
     items_params = params[:outfit][:outfit_items_attributes].map { |item| item[:item_id] }
   
+    Rails.logger.debug "items_params: #{items_params}"
+    
     items_params.each do |item_id|
       next unless current_user.items.find_by(id: item_id)
   
@@ -74,7 +76,8 @@ class OutfitsController < ApplicationController
   end
 
   def outfit_params
-    params.require(:outfit).permit(:image, :vibe, :name, outfit_items_attributes: [:item_id])
+    params.require(:outfit).permit(:image, :vibe, :name)
+    # params.require(:outfit).permit(:image, :vibe, :name, outfit_items_attributes: [:item_id])
   end
 
   def user_not_authorized
