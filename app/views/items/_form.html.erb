@@ -1,3 +1,4 @@
+<div style="display: flex; justify-content: center; align-items: center; ">
 <%= form_with(model: item) do |form| %>
   <% if item.errors.any? %>
     <div style="color: red">
@@ -24,12 +25,13 @@
   </div>
 
   <div>
-    <h5>Any specific details you want to add? For example, this [item] fits snug, or maybe this [item] has a hole by the neck area </h5>
+    <h5>Let's name this item, a short descriuption of what it is: </h5>
     <%= form.label :details, style: "display: block" %>
     <%= form.text_field :details %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-light" %>
   </div>
 <% end %>
+</div>

@@ -1,3 +1,4 @@
+<div style="display: flex; justify-content: center; align-items: center;">
 <%= form_with(model: @outfit) do |form| %>
   <% if @outfit.errors.any? %>
     <div style="color: red">
@@ -12,7 +13,8 @@
   <% end %>
 
   <div>
-    <%= form.label :outfit_items %>
+    <h5>What should be included in this outfit?</h5>
+    <p><%= form.label :outfit_items %></p>
       <% current_user.items.each do |item| %>
       <%= check_box_tag 'outfit[outfit_items_attributes][]item_id', item.id, @outfit.items.include?(item) %>
       <%= item.details %>
@@ -20,16 +22,19 @@
   </div>
 
   <div>
-    <%= form.label :vibe %>
+    <h5>What's the vibe of this outfit? This could even be an inspo photo:</h5> <small> This should be a URL</small>
+    <p><%= form.label :vibe %></p>
     <%= form.text_field :vibe %>
   </div>
   
   <div>
-    <%= form.label :name %>
+    <h5>Let's add a name to this outfit:</h5><small> This should be a discription of the outfit or even the name of the event</small>
+    <p> <%= form.label :name %> </p>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-light" %>
   </div>
 <% end %>
+</div>
