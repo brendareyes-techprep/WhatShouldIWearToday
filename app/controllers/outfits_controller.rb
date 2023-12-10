@@ -10,7 +10,8 @@ class OutfitsController < ApplicationController
 
   def show
     @outfit = Outfit.includes(:items).find(params[:id])
-    @items = @outfit.items.reload
+    @items = @outfit.items
+    Rails.logger.debug "Items: #{@items.inspect}"
   end
 
   def new
