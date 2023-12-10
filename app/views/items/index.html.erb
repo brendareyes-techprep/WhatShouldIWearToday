@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-<%= link_to "New item", new_item_path %>
+<%= link_to "New item", new_item_path, class: "btn btn-outline-light" %>
 <% if @items.any? %>
 <div class="row row-cols-1 row-cols-md-3 g-4" id="outfit_items">
   <% @items.each do |item| %>
