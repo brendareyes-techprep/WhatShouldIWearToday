@@ -22,15 +22,24 @@ class OutfitsController < ApplicationController
 
   def create
     @outfit = current_user.outfits.new(outfit_params)
-    
+  
+    # the outfit_items_attributes form logic in create to refrence
+    items_params = params[:outfit][:outfit_items_attributes].map { |item| item[:item_id] }
+  
+    items_params.each do |item_id|
+      next unless current_user.items.find_by(id: item_id)
+  
+      @outfit.outfit_items.build(item_id: item_id)
+    end
+  
     respond_to do |format|
-        if @outfit.save
-            format.html { redirect_to outfit_url(@outfit), notice: "Outfit was successfully created." }
-            format.json { render :show, status: :created, location: @outfit }
-        else
-            format.html { render :new, status: :unprocessable_entity }
-            format.json { render json: @outfit.errors, status: :unprocessable_entity }
-        end
+      if @outfit.save
+        format.html { redirect_to outfit_url(@outfit), notice: "Outfit was successfully created." }
+        format.json { render :show, status: :created, location: @outfit }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @outfit.errors, status: :unprocessable_entity }
+      end
     end
   end
 

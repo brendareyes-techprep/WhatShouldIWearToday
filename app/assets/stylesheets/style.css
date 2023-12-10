@@ -1,12 +1,13 @@
 body {
-  background-image: #DCDCDC;
-  background-size: cover;
+  background-color: #191970; 
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   font-family: 'Cambo', serif;
   font-size: 15px;
   padding-bottom: 80px;
+  color: white;
 }
+
 footer {
   background-color: #D3D3D3;
   color: black;
@@ -16,12 +17,3 @@ footer {
   bottom: 0;
   width: 100%;
 }
-/* .navbar {
-  background-color: #D3D3D3;
-  color: black;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-} */
