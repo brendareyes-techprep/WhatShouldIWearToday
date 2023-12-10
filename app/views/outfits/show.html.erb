@@ -10,6 +10,9 @@
 
 <ul>
   <h2>Items in Outfit:</h2>
+<% Rails.logger.debug "*"*50 %>
+<% Rails.logger.debug "Rendering items" %>
+<% Rails.logger.debug "*"*50 %>
 
 <% if @outfit.items.any? %>
   <ul>
