@@ -3,7 +3,6 @@
 # Table name: outfits
 #
 #  id         :integer          not null, primary key
-#  date_made  :date
 #  vibe       :url
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
