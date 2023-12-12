@@ -27,6 +27,7 @@ class OutfitsController < ApplicationController
     
     items_params = params[:outfit][:outfit_items_attributes].map { |item| item[:item_id] }
   
+    # this is so that I can make sure data isn't producing twice
     Rails.logger.debug "items_params: #{items_params}"
     
     items_params.each do |item_id|

@@ -1,11 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
     @items = current_user.items
-    # @item = Item.find(params[:id])
   end
 
   def show
