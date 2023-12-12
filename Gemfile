@@ -84,7 +84,7 @@ gem "sqlite3", "~> 1.4"
 gem "table_print"
 gem "pundit"
 
-group :development do
+group :development, :production do
   gem "annotate"
   gem "better_errors"
   gem "binding_of_caller"
@@ -96,6 +96,8 @@ group :development do
   gem "rufo"
   gem "specs_to_readme"
   gem "web_git"
+  gem "carrierwave"
+  gem "cloudinary"
 end
 
 group :development, :test do

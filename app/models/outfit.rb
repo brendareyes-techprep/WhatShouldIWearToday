@@ -3,7 +3,7 @@
 # Table name: outfits
 #
 #  id         :integer          not null, primary key
-#  vibe       :url
+#  vibe       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  owner_id   :integer
