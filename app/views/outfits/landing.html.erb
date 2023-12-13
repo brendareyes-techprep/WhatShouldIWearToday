@@ -1,23 +1,45 @@
-
-    <div class="text-center">
-      <h1>Welcome to UPick</h1>
+<div class="container text-center">
+  <div id="carouselExample" class="carousel slide mx-auto">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://i.imgur.com/YYpWImr.png" class="d-block w-75 mx-auto" alt="Welcome">
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.imgur.com/tgpQVxu.png" class="d-block w-75 mx-auto" alt="to">
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.imgur.com/5ZiIE81.png" class="d-block w-75 mx-auto" alt="UPick">
+      </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
 
-    <div class="text-center">
-      <h4>Love the idea of getting ready but absolutely hate getting to the part where you have to get dressed?</h4>
-    </div>
+<div class="text-center">
+  <h4>Love the idea of getting ready but absolutely hate getting to the part where you have to get dressed?</h4>
+</div>
 
 <div class="text-center">
   <br>
   <h4>
-    This is made for people who never can decide what to wear next, hate outfit repeating and aren't afraid of being in the spotlight. 
-
+    This is made for people who never can decide what to wear next, hate outfit repeating and aren't afraid of being in the spotlight.
     <p>Let's get you set up so U can Pick</p>
- </h4>
+  </h4>
 </div>
-<div class="buttons-container d-grid gap-2 d-md-block">
-  <% unless user_signed_in? %>
-    <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-light' %>
-    <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-info' %>
-  <% end %>
+
+<div class="text-center">
+  <div class="buttons-container d-grid gap-2 d-md-block">
+    <% unless user_signed_in? %>
+      <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-light' %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-info' %>
+    <% end %>
+  </div>
 </div>
+
