@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = current_user.items
+    @item = current_user.items.new
   end
 
   def show
