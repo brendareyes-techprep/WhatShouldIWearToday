@@ -1,26 +1,76 @@
+<button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#newItemModal">New item</button>
 <p style="color: green"><%= notice %></p>
-<%= link_to "New item", new_item_path, class: "btn btn-outline-light" %>
-<% if @items.any? %>
-<div class="row row-cols-1 row-cols-md-3 g-4" id="outfit_items">
-  <% @items.each do |item| %>
-    <div class="col">
-      <div class="card">
-        <% if item.present? %>
-          <img src="<%= item.photo_url %>" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><%= item.details %></h5>
-            <%= link_to "Show this outfit item", item %>
+<div class="modal fade" id="newItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Item</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- your form goes here -->
+        <%= form_with(model: @item) do |form| %>
+          <% if @item.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+              <ul>
+                <% @item.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="mb-3">
+            <p>
+              <h5>Upload a photo of your item:</h5>
+            </p>
+            <%= form.file_field :photo_url, class: 'form-control' %>
           </div>
-        <% else %>
-          <div class="card-body">
-            <p class="card-text"></p>
-            <%= link_to "Show this outfit item", item %>
+
+          <div>
+            <p>
+              <h5>What color is your item? </h5>
+            </p>
+            <%= form.text_field :color_hex, class: 'form-control' %>
+          </div>
+
+          <div>
+            <p>
+              <h5>Let's name this item, a short description of what it is: </h5>
+            </p>
+            <%= form.text_field :details, class: 'form-control' %>
+          </div>
+
+          <div class="mt-3">
+            <%= form.submit class: "btn btn-secondary" %>
           </div>
         <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>
+<% if @items.any? %>
+  <div class="row row-cols-1 row-cols-md-3 g-4" id="outfit_items">
+    <% @items.each do |item| %>
+      <div class="col">
+        <div class="card">
+          <% if item.present? %>
+            <img src="<%= item.photo_url %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= item.details %></h5>
+              <%= link_to "Show this outfit item", item %>
+            </div>
+          <% else %>
+            <div class="card-body">
+              <p class="card-text"></p>
+              <%= link_to "Show this outfit item", item %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% else %>
-<p>Uh oh, it looks like you haven't created anything yet!</p>
+  <p>Uh oh, it looks like you haven't created anything yet!</p>
 <% end %>

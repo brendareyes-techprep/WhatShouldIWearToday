@@ -1,40 +1,50 @@
-<div style="display: flex; justify-content: center; align-items: center;">
-<%= form_with(model: @outfit) do |form| %>
-  <% if @outfit.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@outfit.errors.count, "error") %> prohibited this outfit from being saved:</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <%= form_with(model: @outfit) do |form| %>
+            <% if @outfit.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(@outfit.errors.count, "error") %> prohibited this outfit from being saved:</h2>
 
-      <ul>
-        <% @outfit.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+                <ul>
+                  <% @outfit.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div>
+              <h5>What should be included in this outfit?</h5>
+              <p><%= form.label :outfit_items %></p>
+              <% current_user.items.each do |item| %>
+                <%= check_box_tag 'outfit[outfit_items_attributes][]item_id', item.id, @outfit.items.include?(item) %>
+                <%= item.details %>
+              <% end %>
+            </div>
+
+            <div>
+              <h5>What's the vibe of this outfit? This could even be an inspo photo:</h5>
+              <small>This should be a URL</small>
+              <p><%= form.label :vibe %></p>
+              <%= form.text_field :vibe %>
+            </div>
+
+            <div class="mt-3">
+              <h5>Let's add a name to this outfit:</h5>
+              <small>This should be a description of the outfit or even the name of the event</small>
+              <p><%= form.label :name %></p>
+              <%= form.text_field :name %>
+            </div>
+
+            <div class="p-3">
+              <%= form.submit class: "btn btn-secondary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <h5>What should be included in this outfit?</h5>
-    <p><%= form.label :outfit_items %></p>
-      <% current_user.items.each do |item| %>
-      <%= check_box_tag 'outfit[outfit_items_attributes][]item_id', item.id, @outfit.items.include?(item) %>
-      <%= item.details %>
-    <% end %>
   </div>
-
-  <div>
-    <h5>What's the vibe of this outfit? This could even be an inspo photo:</h5> <small> This should be a URL</small>
-    <p><%= form.label :vibe %></p>
-    <%= form.text_field :vibe %>
-  </div>
-  
-  <div>
-    <h5>Let's add a name to this outfit:</h5><small> This should be a discription of the outfit or even the name of the event</small>
-    <p> <%= form.label :name %> </p>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.submit class: "btn btn-outline-light" %>
-  </div>
-<% end %>
 </div>

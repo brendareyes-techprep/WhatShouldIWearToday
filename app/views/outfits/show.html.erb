@@ -1,42 +1,43 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <p style="color: green"><%= notice %></p>
 
-<h1>Outfit Details</h1>
+      <h1 class="text-center">Outfit Details</h1>
 
-<h3> Name: <%= @outfit.name %> </h3>
-<p><strong>Date Made:</strong> <%= @outfit.created_at %></p>
-<h4> Vibe for this outfit: </h4>
-<img class="img-thumbnail" style="height: 350px; width: 350px;" alt="..." src="<%= @outfit.vibe %>"> 
-<p><strong>Owner:</strong> <%= @outfit.user.email %></p>
+      <h3 class="text-center">Name: <%= @outfit.name %> </h3>
+      <p class="text-center"><strong>Date Made:</strong> <%= @outfit.created_at %></p>
+      <h4 class="text-center">Vibe for this outfit: </h4>
+      <img class="img-thumbnail mx-auto d-block" style="height: 350px; width: 350px;" alt="Outfit Image" src="<%= @outfit.vibe %>">
+      <p class="text-center"><strong>Owner:</strong> <%= @outfit.user.email %></p>
 
-<ul>
-  <h2>Items in Outfit:</h2>
-<% Rails.logger.debug "*"*50 %>
-<% Rails.logger.debug "Rendering items" %>
-<% Rails.logger.debug "*"*50 %>
+      <ul class="text-center">
+        <h2>Items in Outfit:</h2>
 
-<% if @outfit.items.any? %>
-  <ul>
-    <% @outfit.items.each do |item| %>
-      <li>
-        <%= item.details %>
-        <br>
-        Color: <%= item.color_hex %>
-        <br>
-        <img class="img-thumbnail" style="width: 200px; height: 150px;" src="<%= item.photo_url %>">
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No items in this outfit</p>
-<% end %>
-</ul>
+        <% if @outfit.items.any? %>
+          <ul>
+            <% @outfit.items.each do |item| %>
+              <li>
+                <%= item.details %>
+                <br>
+                Color: <%= item.color_hex %>
+                <br>
+                <img class="img-thumbnail mx-auto d-block" style="width: 200px; height: 150px;" src="<%= item.photo_url %>">
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No items in this outfit</p>
+        <% end %>
+      </ul>
 
+      <%= link_to 'Back', outfits_path, class: "btn btn-outline-light" %>
 
-<%= link_to 'Back', outfits_path %>
-
-<div>
-  <%= link_to "Edit this outfit", edit_outfit_path(@outfit), class: "btn btn-outline-light" %>
-  <%= link_to "Back to outfits", outfits_path, class: "btn btn-outline-light" %>
-
-  <%= button_to "Destroy this outfit", @outfit, method: :delete, class: "btn btn-outline-light" %>
+      <div class="text-center">
+        <%= link_to "Edit this outfit", edit_outfit_path(@outfit), class: "btn btn-outline-light" %>
+        <%= link_to "Back to outfits", outfits_path, class: "btn btn-outline-light" %>
+        <%= button_to "Destroy this outfit", @outfit, method: :delete, class: "btn btn-outline-light" %>
+      </div>
+    </div>
+  </div>
 </div>
