@@ -1,7 +1,7 @@
 <div class="grid text-center">
   <div class="col-4"></div>
   <div class="col-4 mx-auto"> 
-
+  <%# clean up indentation %>
     <%= link_to "New outfit", new_outfit_path, class: "btn btn-outline-light" %>
     <% if @outfits.any? %>
       <% @outfits.each do |outfit| %>
